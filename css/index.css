@@ -415,7 +415,7 @@ body{
 }
 @media(max-width:767px){
     .main .main-box .image p,.main .main-box .image span{
-        font-size: 14px;
+        font-size: 12px;
     }
 }
 .main .main-box .image .name{
@@ -424,7 +424,7 @@ body{
     z-index: 100;
     color: #ddd;
     bottom: 10px;
-    margin-right: auto;
+    margin-left: 8px;
     display: block;
 }
 .main .main-box .image .left{
