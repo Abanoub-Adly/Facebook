@@ -6,12 +6,29 @@
     box-sizing: border-box;
 }
 :root{
-    --bg-color-page:#0a0a14;
-    --border-color:#373f6f;
+    --bg-color-page:#fff;
+    --border-color:#777;
     --icon-color:#ab9730;
+    --filter: invert(0%) sepia(0%) saturate(48%) hue-rotate(89deg) brightness(499%) contrast(50%);
+    --filter-special: invert(0%) sepia(0%) saturate(48%) hue-rotate(89deg) brightness(499%) contrast(50%);
+    --more-filter: invert(61%) sepia(26%) saturate(7352%) hue-rotate(158deg) brightness(30%) contrast(101%);
+    --color: #000;
     --notification-color: #00ee14;
     --hover-transation:0.3s;
     --image-wd:30px;
+}
+body.dark{
+    --bg-color-page:#0a0a14;
+    --border-color:#373f6f;
+    --icon-color:#ab9730;
+    --color: #d3d3d4;
+    --filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(276deg) brightness(390%) contrast(103%);
+    --more-filter: normal;
+    --filter-special:normal;
+}
+body{
+    background-color: var(--bg-color-page);
+    color: var(--color);
 }
 .container{
     padding-right: 15px;
@@ -39,9 +56,6 @@ a{
 }
 ul{
     border-style: none;
-}
-body{
-    background-color: var(--bg-color-page);
 }
 /* start nav */
 .nav{
@@ -85,11 +99,11 @@ body{
     padding: 10px;
     background-color: var(--bg-color-page);
     border-color: var(--border-color);
-    color: #ddd;
+    color: var(--color);
 }
 .nav .f-box #textarea::placeholder{
     position: absolute;
-    color: #ddd;
+    color: var(--color);
     top: 50%;
     transform: translateY(-50%);
     margin-left: 10px;
@@ -98,7 +112,7 @@ body{
     position: absolute;
     right: 0;
     margin-right:10px;
-    color: #ffffff;
+    color: var(--color);
     transition: var(--hover-transation);
 }
 .nav .f-box .search:hover{
@@ -111,7 +125,8 @@ body{
 }
 @media(max-width:767px){
     .nav .container{
-        display: block;
+        padding: 20px;
+        margin: 0 5px;
     }
 }
 .nav .facebook-icons .active{
@@ -158,6 +173,12 @@ body{
     bottom: -20px;
     background-color:#60e6b3;
 }
+.nav .facebook-icons .icon:not(:nth-child(2)) img{
+    filter: var(--filter);
+}
+.nav .facebook-icons .icon:nth-child(2) img{
+    filter: var(--filter-special);
+}
 @media(max-width:767px){
     .nav .facebook-icons .icon:hover::before{
     bottom: -15px;
@@ -202,7 +223,7 @@ body{
 }
 .nav .other-icons div i{
     width: var(--image-wd);
-    color: white;
+    color: var(--color);
     margin-right: 10px;
 }
 .nav .other-icons div img{
@@ -210,6 +231,60 @@ body{
     height: 40px;
     border-radius: 50%;
     cursor: pointer;
+}
+.nav label{
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 30px;
+}
+.nav label input{
+    opacity: 0;
+}
+.nav label span{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    border: 1px solid var(--border-color);
+    background-color: #fff;
+    cursor: pointer;
+    transition: .4s;
+}
+.nav label span::before{
+    position: absolute;
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-image: url(../images/p1qs_4h7q_210525.jpg);
+    background-size: cover;
+    border-radius: 50%;
+    left: 4px;
+    top: 5px;
+    transition: .4s;
+}
+.nav label input:checked + span{
+    background-color: #0a0a14;
+}
+.nav label input:checked + span::before{
+    background-image: url(../images/360_F_10172014_wxVxnHSJ8QemtUokpdX8hDnyVKjyE6c1.jpg);
+    left: 52px;
+}
+@media(max-width:767px){
+    .nav label{
+        width: 60px;
+        height: 20px;
+    }
+    .nav label span::before{
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        left: 4px;
+        top: 1px;
+    }
+    .nav label input:checked + span::before{
+        left: 42px;
+    }
 }
 /* end nav */
 /* start page */
@@ -269,11 +344,11 @@ body{
     cursor: pointer;
 }
 .page .container .box .box-content p{
-    color: #ddd;
+    color: var(--color);
     margin-left: 10px;
 }
 .page .container .box .pure-p{
-    color: #ddd;
+    color: var(--color);
     margin:0 0 15px
 }
 .page .container .box ul li{
@@ -302,7 +377,7 @@ body{
     display: block;
     font-size: 12px;
     font-weight: bold;
-    color: #ddd;
+    color: var(--color);
     margin-left: 10px;
     flex: 1;
 }
@@ -329,7 +404,7 @@ body{
     align-items: center;
     justify-content: center;
     font-size: 18px;
-    color: #ddd;
+    color: var(--color);
     cursor: pointer;
 }
 @media(max-width:767px){
@@ -361,6 +436,7 @@ body{
 }
 .main .box .main-info .m-info img{
     margin-right: 10px;
+    filter: var(--filter);
 }
 .main .main-box{
     padding: 20px 20px 0 20px;
@@ -385,6 +461,10 @@ body{
 .main .main-box .image img{
     max-width: 100%;
 }
+.main .main-box .image:not(:first-child) img:first-child{
+    max-width: 100%;
+    height: 100%;
+}
 .main .main-box .image .upload{
     position: absolute;
     width: 25px;
@@ -393,7 +473,7 @@ body{
     transform: translateX(-50%);
     bottom: 65px;
     border-radius: 50%;
-    border: 2px solid var(--bg-color-page);
+    border: 2px solid var(--border-color);
 }
 @media(max-width:767px){
     .main .main-box .image .upload{
@@ -409,7 +489,7 @@ body{
     right: 10px;
 }
 .main .main-box .image p{
-    color: white;
+    color: var(--color);
     text-align: center;
     padding: 20px 0 5px;
 }
@@ -422,7 +502,7 @@ body{
     width: fit-content;
     position: absolute;
     z-index: 100;
-    color: #ddd;
+    color: white;
     bottom: 10px;
     margin-left: 8px;
     display: block;
@@ -441,8 +521,8 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #ddd;
-    color: #ddd;
+    border: 2px solid var(--border-color);
+    color: var(--color);
 }
 .box .mind-box{
     position: relative;
@@ -471,11 +551,11 @@ body{
     padding: 10px;
     border: 2px solid var(--border-color);
     background-color: var(--bg-color-page);
-    color: #ddd;
+    color: var(--color);
 }
 .box .mind-box #mind-textarea::placeholder{
     position: absolute;
-    color: #ddd;
+    color: var(--color);
     top: 50%;
     transform: translateY(-50%);
     margin-left: 10px;
@@ -504,7 +584,7 @@ body{
 .box .mind-box-icons .mind-box-icon span{
     display: block;
     font-size: 15px;
-    color: #ddd;
+    color: var(--color);
     margin-left: 10px;
 }
 @media(max-width:767px){
@@ -539,17 +619,18 @@ body{
     display: block;
 }
 .box .top-content .info-t span{
-    color: #ddd;
+    color: var(--color);
     margin-left: 10px;
 }
 .box .special-h1{
-    color: #ddd;
+    color: var(--color);
     font-size: 20px;
     padding: 10px;
 }
 .box .more-img{
     width: 25px;
     cursor: pointer;
+    filter: var(--more-filter);
 }
 @media(max-width:767px){
     .box .special-h1{
@@ -577,12 +658,12 @@ body{
 }
 .box .Social-icons .Social-icon i{
     font-size: 20px;
-    color: #ddd;
+    color: var(--color);
 }
 .box .Social-icons .Social-icon span{
     display: block;
     font-size: 15px;
-    color: #ddd;
+    color: var(--color);
     margin-left: 10px;
 }
 @media(max-width:767px){
@@ -591,7 +672,7 @@ body{
     }
     .box .Social-icons .Social-icon i{
         font-size: 15px;
-        color: #ddd;
+        color: var(--color);
     }
     .box .Social-icons .Social-icon span{
         margin-left: 5px;
@@ -642,11 +723,11 @@ body{
     border-radius: 50px;
     border: 2px solid var(--border-color);
     background-color: var(--bg-color-page);
-    color: #ddd;
+    color: var(--color);
 }
 .box .foot-box #foot-textarea::placeholder{
     position: absolute;
-    color: #ddd;
+    color: var(--color);
     top: 50%;
     transform: translateY(-50%);
     margin-left: 10px;
@@ -672,6 +753,7 @@ body{
     border-radius: 50%;
     border: 2px solid #ddd;
     cursor: pointer;
+    filter: var(--filter);
 }
 @media(max-width:767px){
     .box .foot-box .foot-images .img-pi{
@@ -695,7 +777,7 @@ body{
 .box .gift-box p{
     font-size: 12px;
     font-weight: bold;
-    color: #ddd;
+    color: var(--color);
 }
 .box .ul-user{
     display: flex;
@@ -722,6 +804,6 @@ body{
     margin-right: 5px;
 }
 .box .ul-user .US-name{
-    color: #ddd;
+    color: var(--color);
     font-size: 12px;
 }
