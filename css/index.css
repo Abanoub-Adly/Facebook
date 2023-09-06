@@ -139,7 +139,7 @@ ul{
     margin-left: -20px;
     height: 2px;
     bottom: -20px;
-    background-color: #60e6b3;
+    background-color: #2196F3;
 }
 @media(max-width:767px){
     .nav .facebook-icons .active::before{
@@ -272,18 +272,20 @@ ul{
 }
 @media(max-width:767px){
     .nav label{
-        width: 60px;
-        height: 20px;
+        width: 30px;
     }
     .nav label span::before{
-        width: 15px;
-        height: 15px;
+        width: 21px;
+        height: 21px;
         border-radius: 50%;
         left: 4px;
-        top: 1px;
+        top: 4px;
     }
     .nav label input:checked + span::before{
-        left: 42px;
+        left: 4px;
+    }
+    .nav label input:checked + span{
+        border-color: white;
     }
 }
 /* end nav */
