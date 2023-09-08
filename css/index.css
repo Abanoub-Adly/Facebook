@@ -8,7 +8,7 @@
 :root{
     --bg-color-page:#fff;
     --border-color:#777;
-    --icon-color:#ab9730;
+    --icon-color:#2196F3;
     --filter: invert(0%) sepia(0%) saturate(48%) hue-rotate(89deg) brightness(499%) contrast(50%);
     --filter-special: invert(0%) sepia(0%) saturate(48%) hue-rotate(89deg) brightness(499%) contrast(50%);
     --more-filter: invert(61%) sepia(26%) saturate(7352%) hue-rotate(158deg) brightness(30%) contrast(101%);
@@ -171,7 +171,7 @@ ul{
     margin-left: -20px;
     height: 2px;
     bottom: -20px;
-    background-color:#60e6b3;
+    background-color:#2196F3;
 }
 .nav .facebook-icons .icon:not(:nth-child(2)) img{
     filter: var(--filter);
@@ -408,6 +408,7 @@ ul{
     font-size: 18px;
     color: var(--color);
     cursor: pointer;
+    height: 24px;
 }
 @media(max-width:767px){
     .main .box .main-info .m-info{
@@ -428,12 +429,12 @@ ul{
 .main .box .main-info .m-info{
     position: relative;
 }
-.main .box .main-info .m-info:hover:not(:first-child)::before{
+.main .box .main-info .m-info:hover::before{
     position: absolute;
     content: "";
     width: 100%;
     height: 2px;
-    bottom: -16px;
+    bottom: -12px;
     background-color: var(--icon-color);
 }
 .main .box .main-info .m-info img{
